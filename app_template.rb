@@ -1,6 +1,13 @@
 # change README to markdown
 remove_file 'README.rdoc'
 create_file 'README.md', 'TODO'
+
+# generate root controller
+if yes? 'Do you want to generate a root controller?'
+  name = ask('What should it be called?').underscore
+  generate :controller, "#{name} index"
+  route "root to: '#{name}\#index'"
+end
  
 # set up additional application folders
 keep_file 'app/services'
