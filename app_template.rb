@@ -85,6 +85,9 @@ if yes?('Using RVM?')
   create_file '.ruby-version', rvm_ruby_version
   create_file '.ruby-gemset', rvm_ruby_gemset
 end
+
+# capify project
+run 'capify .'
  
 # git initialization
 git :init
