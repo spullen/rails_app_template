@@ -23,6 +23,8 @@ gem 'carrierwave'
 gem 'cocoon'
 gem 'cancan'
 gem 'american_date'
+gem 'unicorn'
+gem 'capistrano'
  
 # test and development gems
 gem_group :test, :development do
