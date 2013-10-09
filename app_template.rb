@@ -73,14 +73,16 @@ if install_devise
 end
  
 # create the ruby version and gemset files
-run 'rvm list'
-rvm_ruby_version = ask('Ruby Version?')
+if yes?('Using RVM?')
+  run 'rvm list'
+  rvm_ruby_version = ask('Ruby Version?')
 
-run 'rvm gemset list'
-rvm_ruby_gemset = ask('Ruby Gemset?')
+  run 'rvm gemset list'
+  rvm_ruby_gemset = ask('Ruby Gemset?')
 
-create_file '.ruby-version', rvm_ruby_version
-create_file '.ruby-gemset', rvm_ruby_gemset
+  create_file '.ruby-version', rvm_ruby_version
+  create_file '.ruby-gemset', rvm_ruby_gemset
+end
  
 # git initialization
 git :init
