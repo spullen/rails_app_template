@@ -56,7 +56,7 @@ if install_devise = yes?('Install Devise?')
 end
  
 # run the bundle command
-run 'bundle install'
+run 'bundle install --binstubs'
  
 # install rspec
 generate 'rspec:install'
