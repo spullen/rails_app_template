@@ -2,13 +2,18 @@
 remove_file 'README.rdoc'
 create_file 'README.md', 'TODO'
 
-# generate root controller
-if yes? 'Do you want to generate a root controller?'
-  name = ask('What should it be called?').underscore
-  generate :controller, "#{name} index"
-  route "root to: '#{name}\#index'"
+# create the ruby version and gemset files
+if yes?('Using RVM?')
+  run 'rvm list'
+  rvm_ruby_version = ask('Ruby Version?')
+
+  run 'rvm gemset list'
+  rvm_ruby_gemset = ask('Ruby Gemset?')
+
+  create_file '.ruby-version', rvm_ruby_version
+  create_file '.ruby-gemset', rvm_ruby_gemset
 end
- 
+
 # set up additional application folders
 keep_file 'app/services'
 keep_file 'app/presenters'
@@ -74,21 +79,16 @@ if install_devise
   generate 'devise:install'
   generate 'devise', devise_model_name
 end
- 
-# create the ruby version and gemset files
-if yes?('Using RVM?')
-  run 'rvm list'
-  rvm_ruby_version = ask('Ruby Version?')
-
-  run 'rvm gemset list'
-  rvm_ruby_gemset = ask('Ruby Gemset?')
-
-  create_file '.ruby-version', rvm_ruby_version
-  create_file '.ruby-gemset', rvm_ruby_gemset
-end
 
 # capify project
 run 'capify .'
+
+# generate root controller
+if yes? 'Do you want to generate a root controller?'
+  name = ask('What should it be called?').underscore
+  generate :controller, "#{name} index"
+  route "root to: '#{name}\#index'"
+end
  
 # git initialization
 git :init
