@@ -34,6 +34,7 @@ gem_group :test, :development do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'timecop'
 end
