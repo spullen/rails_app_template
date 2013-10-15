@@ -95,6 +95,5 @@ end
 # git initialization
 git :init
 append_file '.gitignore', 'config/database.yml'
-append_file '.gitignore', 'public/uploads'
 run 'cp config/database.yml config/database.yml.example'
 git add: '.', commit: '-m "initial commit"'
