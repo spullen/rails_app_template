@@ -29,7 +29,12 @@ gem 'cocoon'
 gem 'cancan'
 gem 'american_date'
 gem 'unicorn'
-gem 'capistrano'
+
+if yes?('Mina Deploy?')
+  gem 'mina'
+elsif yes?('Capistrano Deploy?')
+  gem 'capistrano'
+end
  
 # test and development gems
 gem_group :test, :development do
