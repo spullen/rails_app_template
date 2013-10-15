@@ -80,9 +80,6 @@ if install_devise
   generate 'devise', devise_model_name
 end
 
-# capify project
-run 'capify .'
-
 # generate root controller
 if yes? 'Do you want to generate a root controller?'
   name = ask('What should it be called?').underscore
